@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aluminosa RST - Material Elétrico em Rio de Janeiro</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a2a6c;
+            --secondary-color: #b21f1f;
+            --accent-color: #fdbb4d;
+            --light-color: #f8f9fa;
+            --dark-color: #1a1a2e;
+            --success-color: #28a745;
+            --info-color: #17a2b8;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .bg-primary-custom {
+            background: linear-gradient(135deg, var(--primary-color), #16213e);
+        }
+        
+        .text-primary-custom {
+            color: var(--primary-color);
+        }
+        
+        .bg-secondary-custom {
+            background-color: var(--secondary-color);
+        }
+        
+        .text-secondary-custom {
+            color: var(--secondary-color);
+        }
+        
+        .btn-custom {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-custom:hover {
+            background-color: #8b1a1a;
+            transform: translateY(-2px);
+            color: white;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 0;
+            position: relative;
+        }
+        
+        .product-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .product-img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+        
+        .category-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .category-card {
+            transition: transform 0.3s;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-card:hover .category-icon {
+            transform: scale(1.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .contact-info i {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-right: 10px;
+        }
+        
+        .stats-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .whatsapp-float:hover {
+            color: #FFF;
+            background-color: #128C7E;
+        }
+        
+        .brands-section {
+            background-color: var(--light-color);
+            padding: 40px 0;
+        }
+        
+        .brand-logo {
+            text-align: center;
+            padding: 20px;
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+        
+        .brand-logo:hover {
+            filter: grayscale(0%);
+        }
+        
+        .brand-logo i {
+            font-size: 3rem;
+            color: var(--primary-color);
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-icon {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de Navegação -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-bolt me-2"></i>
+                <span class="fw-bold">Aluminosa</span> RST
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#products">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#categories">Categorias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Seção Hero -->
+    <section id="home" class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-4">Aluminosa RST</h1>
+            <p class="lead mb-4">Soluções completas em material elétrico para sua obra ou projeto</p>
+            <p class="mb-5">Qualidade, segurança e inovação para instalações elétricas residenciais, comerciais e industriais</p>
+            <a href="#products" class="btn btn-custom btn-lg px-4 me-2">
+                <i class="fas fa-box-open me-2"></i> Nossos Produtos
+            </a>
+            <a href="https://wa.me/552121972300" class="btn btn-success btn-lg px-4">
+                <i class="fab fa-whatsapp me-2"></i> Orçamento Rápido
+            </a>
+        </div>
+    </section>
+
+    <!-- Seção Diferenciais -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-truck-fast"></i>
+                        </div>
+                        <h5>Entrega Rápida</h5>
+                        <p class="text-muted">Entregamos em todo Rio de Janeiro</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h5>Produtos Certificados</h5>
+                        <p class="text-muted">Garantia de qualidade e segurança</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <h5>Melhor Preço</h5>
+                        <p class="text-muted">Orçamento competitivo do mercado</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h5>Suporte Técnico</h5>
+                        <p class="text-muted">Equipe especializada para atendê-lo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner Promocional -->
+    <div class="container mt-3">
+        <div class="alert alert-danger text-center" role="alert">
+            <i class="fas fa-tags me-2"></i>
+            <strong>Promoção Especial!</strong> Desconto de 10% na primeira compra para obras novas. Consulte condições!
+        </div>
+    </div>
+
+    <!-- Seção Produtos em Destaque -->
+    <section id="products" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-primary-custom">Produtos em Destaque</h2>
+                <p class="lead">Os itens mais vendidos da nossa loja</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="product-card card">
+                        <img src="https://images.unsplash.com/photo-1563089145-5990976748b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="product-img" alt="Disjuntores">
+                        <div class="card-body">
+                            <h5 class="card-title">Disjuntores</h5>
+                            <p class="card-text text-muted">Linha completa de disjuntores termomagnéticos</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-primary-custom fw-bold">Sob consulta</span>
+                                <button class="btn btn-sm btn-custom" onclick="window.open('https://wa.me/552121972300?text=Olá! Tenho interesse nos Disjuntores')">
+                                    <i class="fab fa-whatsapp"></i> Orçar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="product-card card">
+                        <img src="https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="product-img" alt="Fios e Cabos">
+                        <div class="card-body">
+                            <h5 class="card-title">Fios e Cabos</h5>
+                            <p class="card-text text-muted">Cabos elétricos de alta performance</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-primary-custom fw-bold">Sob consulta</span>
+                                <button class="btn btn-sm btn-custom" onclick="window.open('https://wa.me/552121972300?text=Olá! Tenho interesse nos Fios e Cabos')">
+                                    <i class="fab fa-whatsapp"></i> Orçar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="product-card card">
+                        <img src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="product-img" alt="Interruptores">
+                        <div class="card-body">
+                            <h5 class="card-title">Interruptores</h5>
+                            <p class="card-text text-muted">Design moderno e acabamento premium</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-primary-custom fw-bold">Sob consulta</span>
+                                <button class="btn btn-sm btn-custom" onclick="window.open('https://wa.me/552121972300?text=Olá! Tenho interesse nos Interruptores')">
+                                    <i class="fab fa-whatsapp"></i> Orçar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="product-card card">
+                        <img src="https://images.unsplash.com/photo-1581094288338-1c0a3d6a6d0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" class="product-img" alt="Ferramentas">
+                        <div class="card-body">
+                            <h5 class="card-title">Ferramentas</h5>
+                            <p class="card-text text-muted">Ferramentas profissionais para eletricistas</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-primary-custom fw-bold">Sob consulta</span>
+                                <button class="btn btn-sm btn-custom" onclick="window.open('https://wa.me/552121972300?text=Olá! Tenho interesse nas Ferramentas')">
+                                    <i class="fab fa-whatsapp"></i> Orçar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Categorias -->
+    <section id="categories" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-primary-custom">Categorias de Produtos</h2>
+                <p class="lead">Tudo o que você precisa para seu projeto elétrico</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="category-card card">
+                        <div class="category-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h5>Disjuntores</h5>
+                        <p class="text-muted small">Termomagnéticos, DR, DPS</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="category-card card">
+                        <div class="category-icon">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <h5>Tomadas</h5>
+                        <p class="text-muted small">10A, 20A, universais</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="category-card card">
+                        <div class="category-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h5>Iluminação</h5>
+                        <p class="text-muted small">LED, lâmpadas, luminárias</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="category-card card">
+                        <div class="category-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h5>Ferramentas</h5>
+                        <p class="text-muted small">Profissionais e manuais</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="category-card card">
+                        <div class="category-icon">
+                            <i class="fas fa-cable-car"></i>
+                        </div>
+                        <h5>Cabos e Fios</h5>
+                        <p class="text-muted small">Cobre, alumínio, flexíveis</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="category-card card">
+                        <div class="category-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h5>Quadros Elétricos</h5>
+                        <p class="text-muted small">Distribuição e proteção</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="category-card card">
+                        <div class="category-icon">
+                            <i class="fas fa-charging-station"></i>
+                        </div>
+                        <h5>Carregadores</h5>
+                        <p class="text-muted small">Para veículos elétricos</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="category-card card">
+                        <div class="category-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h5>Automação</h5>
+                        <p class="text-muted small">Smart home e sensores</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Serviços -->
+    <section id="services" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-primary-custom">Nossos Serviços</h2>
+                <p class="lead">Oferecemos soluções completas para sua obra</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h5>Orçamento Técnico</h5>
+                        <p class="text-muted">Elaboramos orçamentos detalhados para seu projeto</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-dolly"></i>
+                        </div>
+                        <h5>Entrega no Canteiro</h5>
+                        <p class="text-muted">Entregamos diretamente no local da obra</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chalkboard-user"></i>
+                        </div>
+                        <h5>Consultoria Técnica</h5>
+                        <p class="text-muted">Equipe especializada para orientar suas escolhas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Marcas Parceiras -->
+    <section class="brands-section">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h3 class="fw-bold text-primary-custom">Marcas que Trabalhamos</h3>
+                <p class="text-muted">Parceria com as melhores marcas do mercado</p>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-4">
+                    <div class="brand-logo">
+                        <i class="fas fa-bolt"></i>
+                        <p class="small mt-2">Schneider</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-4">
+                    <div class="brand-logo">
+                        <i class="fas fa-plug"></i>
+                        <p class="small mt-2">Siemens</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-4">
+                    <div class="brand-logo">
+                        <i class="fas fa-lightbulb"></i>
+                        <p class="small mt-2">Philips</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-4">
+                    <div class="brand-logo">
+                        <i class="fas fa-tools"></i>
+                        <p class="small mt-2">Bosch</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-4">
+                    <div class="brand-logo">
+                        <i class="fas fa-cable-car"></i>
+                        <p class="small mt-2">Prysmian</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-4">
+                    <div class="brand-logo">
+                        <i class="fas fa-microchip"></i>
+                        <p class="small mt-2">Intelbras</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Estatísticas -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <i class="fas fa-calendar-alt fa-2x mb-3"></i>
+                        <div class="stats-number">+20</div>
+                        <p>Anos de Experiência</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <i class="fas fa-users fa-2x mb-3"></i>
+                        <div class="stats-number">+5.000</div>
+                        <p>Clientes Atendidos</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <i class="fas fa-boxes fa-2x mb-3"></i>
+                        <div class="stats-number">+10.000</div>
+                        <p>Produtos em Estoque</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card">
+                        <i class="fas fa-trophy fa-2x mb-3"></i>
+                        <div class="stats-number">100%</div>
+                        <p>Satisfação Garantida</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Sobre -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="fw-bold text-primary-custom mb-4">Sobre a Aluminosa RST</h2>
+                    <p class="lead">Excelência em material elétrico há mais de 20 anos</p>
+                    <p>A Aluminosa RST é referência no Rio de Janeiro na distribuição de materiais elétricos de alta qualidade. Nossa missão é oferecer produtos certificados, com garantia de segurança e durabilidade para todos os tipos de instalações.</p>
+                    
+                    <div class="mt-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-check-circle text-success me-3 fa-lg"></i>
+                            <span>Produtos com certificação INMETRO</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-check-circle text-success me-3 fa-lg"></i>
+                            <span>Atendimento técnico especializado</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-check-circle text-success me-3 fa-lg"></i>
+                            <span>Entrega programada e pontual</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-check-circle text-success me-3 fa-lg"></i>
+                            <span>Suporte pós-venda</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Aluminosa RST" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Contato -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-primary-custom">Fale Conosco</h2>
+                <p class="lead">Estamos prontos para atender sua necessidade</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h4 class="card-title mb-4 text-primary-custom">Informações de Contato</h4>
+                            
+                            <div class="contact-info mb-4">
+                                <p><i class="fas fa-map-marker-alt"></i> <strong>Endereço:</strong> Avenida Das Americas, 13749 - Recreio dos Bandeirantes, Rio de Janeiro - RJ, 22790-701</p>
+                                <p><i class="fas fa-phone-alt"></i> <strong>Telefone:</strong> (21) 2197-2300</p>
+                                <p><i class="fab fa-whatsapp"></i> <strong>WhatsApp:</strong> (21) 99703-3518</p>
+                                <p><i class="fas fa-envelope"></i> <strong>Email:</strong> contato@aluminosarst.com.br</p>
+                                <p><i class="fas fa-clock"></i> <strong>Horário de Funcionamento:</strong> Segunda a Sexta, das 8h às 18h | Sábado, das 8h às 12h</p>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <h5 class="mb-3">Siga-nos nas redes sociais</h5>
+                                <a href="#" class="btn btn-outline-primary me-2"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="btn btn-outline-danger me-2"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="btn btn-outline-info me-2"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://wa.me/552121972300" class="btn btn-outline-success me-2"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h4 class="card-title mb-4 text-primary-custom">Solicite um Orçamento</h4>
+                            <form>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Nome Completo</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Telefone</label>
+                                    <input type="tel" class="form-control" id="phone" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">Assunto</label>
+                                    <select class="form-select" id="subject">
+                                        <option selected>Selecione um assunto</option>
+                                        <option>Orçamento de produtos</option>
+                                        <option>Informações técnicas</option>
+                                        <option>Parceria comercial</option>
+                                        <option>Suporte pós-venda</option>
+                                        <option>Outros</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Mensagem</label>
+                                    <textarea class="form-control" id="message" rows="4" placeholder="Descreva sua necessidade ou projeto..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-custom w-100">Enviar Mensagem</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mapa -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h3 class="fw-bold text-primary-custom">Nossa Localização</h3>
+                <p class="text-muted">Venha nos visitar ou entre em contato para agendar uma visita</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="ratio ratio-16x9 rounded shadow">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3673.926447907424!2d-43.475414!3d-22.958057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9bdaf4e5a6b1c7%3A0x8b1c5a8d3b2e6f1!2sAv.%20das%20Am%C3%A9ricas%2C%2013749%20-%20Recreio%20dos%20Bandeirantes%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%2022790-701!5e0!3m2!1spt-BR!2sbr!4v1699999999999!5m2!1spt-BR!2sbr" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5 class="text-white mb-3">
+                        <i class="fas fa-bolt me-2"></i>Aluminosa RST
+                    </h5>
+                    <p class="mb-0 text-white-50">CNPJ: 20.481.296/0001-17</p>
+                    <p class="text-white-50">Razão Social: Aluminosa Rst Material Eletrico LTDA</p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5 class="text-white mb-3">Links Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="text-white-50 text-decoration-none">Início</a></li>
+                        <li><a href="#products" class="text-white-50 text-decoration-none">Produtos</a></li>
+                        <li><a href="#categories" class="text-white-50 text-decoration-none">Categorias</a></li>
+                        <li><a href="#contact" class="text-white-50 text-decoration-none">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="text-white mb-3">Segurança</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-lock text-white-50 me-2"></i><span class="text-white-50">Ambiente Seguro</span></li>
+                        <li><i class="fas fa-shield-alt text-white-50 me-2"></i><span class="text-white-50">Produtos Originais</span></li>
+                        <li><i class="fas fa-certificate text-white-50 me-2"></i><span class="text-white-50">Garantia Certificada</span></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0 text-white-50">© 2024 Aluminosa RST. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0 text-white-50">Data Situação Cadastral: 18/02/2022</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão do WhatsApp -->
+    <a href="https://wa.me/552121972300" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
